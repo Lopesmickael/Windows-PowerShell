@@ -2,7 +2,7 @@
 .SYNOPSIS
 	Script: Get-MSOLAdmins
 .DESCRIPTION
-    This script permit to get MSOLAdmins to audit quikly rights in Azure AD
+    This script permit to get MSOLAdmins to audit quickly rights in Azure AD
 .EXAMPLE
     C:\PS> Get-MSOLAdmins
 .NOTES
