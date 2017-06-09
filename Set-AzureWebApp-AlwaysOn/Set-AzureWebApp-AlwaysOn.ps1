@@ -16,9 +16,9 @@
 .EXAMPLE
     C:\PS> Set-AzureWebApp-AlwaysOn.ps1 [-ResourceGroupName] [-WepAppName] [-AlwaysOn] [-Slot]
 .NOTES
-    Author: M LOPES
+    Author: Mickaël LOPES (https://lopes.im)
     Date:   2017-06-09
-	Version:0.1
+    Version:0.1
 #>
 
 Write-Output "INFO : Preparing AlwaysOn value for WebApp $WebAppName to $AlwaysOn"
