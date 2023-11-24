@@ -12,7 +12,7 @@
         $files = Get-ChildItem $Path
         Foreach ($file in $files){
             $filepath = $file.FullName
-            if ($filepath -contains "ROOT"){
+            if ($filepath -match "ROOT"){
                 Import-Certificate -FilePath $filepath -CertStoreLocation = 'Cert:\LocalMachine\Root'
                 Write-Host $file.name"is installed in ROOT folder"
             }else{
