@@ -13,11 +13,11 @@
         Foreach ($file in $files){
             $filepath = $file.FullName
             if ($filepath -match "ROOT"){
-                Import-Certificate -FilePath $filepath -CertStoreLocation = 'Cert:\LocalMachine\Root'
-                Write-Host $file.name"is installed in ROOT folder"
+                Import-Certificate -FilePath $filepath -CertStoreLocation 'Cert:\LocalMachine\Root'
+                Write-Host "INFO : "$file.name"is installed in ROOT folder"
             }else{
-                Import-Certificate -FilePath $filepath -CertStoreLocation = 'Cert:\LocalMachine\CA'
-                Write-Host $file.name"is installed in Intermediate folder"
+                Import-Certificate -FilePath $filepath -CertStoreLocation 'Cert:\LocalMachine\CA'
+                Write-Host "INFO : "$file.name"is installed in Intermediate folder"
             }
         }
     }
@@ -36,26 +36,26 @@
 $CertTable = $Certificate_Table
     
     if ($Type -eq "Online") {
-        Write-Host "You selected Online mode, certificates will be downloaded in the folder you specified"
-        Write-Host "$Path will be used to download certificates"
+        Write-Host "INFO : You selected Online mode, certificates will be downloaded in the folder you specified"
+        Write-Host "INFO : $Path will be used to download certificates"
 
         Push-Location $Path
 
         Foreach ($Line in $CertTable){
             $certurl = $line.Link
             $certname = $line.Certname
-            Write-Host "Downloading $certname"
+            Write-Host "INFO : Downloading $certname"
         try {
             Invoke-WebRequest -Uri $certurl -OutFile ./$certname.crt
         }
         catch {
-            Write-Host "ERROR to download certificate, check Internet connexion, proxy, or go in Offline mode"
+            Write-Host "ERROR : Error on download certificate, check Internet connexion, proxy, or go in Offline mode"
         }
         }
         Install-Cert
 
     } else {
-        Write-Host "You selected offline mode, we will use the selected path"
-        Write-Host "$Path will be used as source for certificates"
+        Write-Host "INFO : You selected offline mode, we will use the selected path"
+        Write-Host "INFO : $Path will be used as source for certificates"
         Install-Cert
     }
