@@ -12,7 +12,7 @@
         $files = Get-ChildItem $Path
         Foreach ($file in $files){
             $nb = 0
-            $filepath = $file.filepath
+            $filepath = $file.FullName
             if ($nb -ge 4){
                 Import-Certificate -FilePath $filepath -CertStoreLocation = 'Cert:\LocalMachine\CA'
                 Write-Host $file.name"is installed in Intermediate folder"
@@ -20,7 +20,7 @@
                 Import-Certificate -FilePath $filepath -CertStoreLocation = 'Cert:\LocalMachine\Root'
                 Write-Host $file.name"is installed in ROOT folder"
             }
-            $nb = $nb + 1
+            $nb = ($nb + 1)
         }
     }
 
