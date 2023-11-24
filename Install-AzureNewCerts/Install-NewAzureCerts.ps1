@@ -27,7 +27,7 @@
                     Write-Host "INFO : "$file.name"is installed in Intermediate folder"  
                 }
                 catch {
-                    Write-Host "ERROR : "$file.name"is installed in Intermediate folder"
+                    Write-Host "ERROR : "$file.name"is not installed in Intermediate folder"
                 }
 
             }
@@ -39,7 +39,7 @@
 @{Certname = "DigiCert Global Root G2"; Link = "https://cacerts.digicert.com/DigiCertGlobalRootG2.crt"},
 @{Certname = "Microsoft RSA Root Certificate Authority 2017"; Link = "https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt"},
 @{Certname = "Microsoft ECC Root Certificate Authority 2017"; Link = "https://www.microsoft.com/pkiops/certs/Microsoft%20ECC%20Root%20Certificate%20Authority%202017.crt"},
-@{Certname = "Microsoft Azure TLS Issuing CA 01	"; Link = "https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2001%20-%20xsign.crt"},
+@{Certname = "Microsoft Azure TLS Issuing CA 01"; Link = "https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2001%20-%20xsign.crt"},
 @{Certname = "Microsoft Azure TLS Issuing CA 02"; Link = "https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2002%20-%20xsign.crt"},
 @{Certname = "Microsoft Azure TLS Issuing CA 05"; Link = "https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2005%20-%20xsign.crt"},
 @{Certname = "Microsoft Azure TLS Issuing CA 06"; Link = "https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2006%20-%20xsign.crt"}
