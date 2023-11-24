@@ -11,16 +11,14 @@
     function Install-Cert {
         $files = Get-ChildItem $Path
         Foreach ($file in $files){
-            $nb = 0
             $filepath = $file.FullName
-            if ($nb -ge 4){
-                Import-Certificate -FilePath $filepath -CertStoreLocation = 'Cert:\LocalMachine\CA'
-                Write-Host $file.name"is installed in Intermediate folder"
-            }else{
+            if ($filepath -contains "ROOT"){
                 Import-Certificate -FilePath $filepath -CertStoreLocation = 'Cert:\LocalMachine\Root'
                 Write-Host $file.name"is installed in ROOT folder"
+            }else{
+                Import-Certificate -FilePath $filepath -CertStoreLocation = 'Cert:\LocalMachine\CA'
+                Write-Host $file.name"is installed in Intermediate folder"
             }
-            $nb = ($nb + 1)
         }
     }
 
