@@ -13,11 +13,23 @@
         Foreach ($file in $files){
             $filepath = $file.FullName
             if ($filepath -match "ROOT"){
-                Import-Certificate -FilePath $filepath -CertStoreLocation 'Cert:\LocalMachine\Root'
-                Write-Host "INFO : "$file.name"is installed in ROOT folder"
+                try {
+                    Import-Certificate -FilePath $filepath -CertStoreLocation 'Cert:\LocalMachine\Root'
+                    Write-Host "INFO : "$file.name"is installed in ROOT folder"
+                }
+                catch {
+                    Write-Host "ERROR : "$file.name"is not installed in ROOT folder"
+                }
+
             }else{
-                Import-Certificate -FilePath $filepath -CertStoreLocation 'Cert:\LocalMachine\CA'
-                Write-Host "INFO : "$file.name"is installed in Intermediate folder"
+                try {
+                    Import-Certificate -FilePath $filepath -CertStoreLocation 'Cert:\LocalMachine\CA'
+                    Write-Host "INFO : "$file.name"is installed in Intermediate folder"  
+                }
+                catch {
+                    Write-Host "ERROR : "$file.name"is installed in Intermediate folder"
+                }
+
             }
         }
     }
