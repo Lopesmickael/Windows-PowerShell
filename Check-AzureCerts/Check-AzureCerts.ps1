@@ -21,14 +21,13 @@ Write-Host "Starting Certificate check"
 
 Foreach ($Line in $CertTable){
     
-    $cert = Get-ChildItem -Path Cert:\LocalMachine\ | Where-Object {$_.Thumbprint -eq $Line.Certtb} -ErrorAction SilentlyContinue
+    $cert = Get-ChildItem -Path Cert:\LocalMachine\ -Recurse | Where-Object {$_.Thumbprint -eq $Line.Certtb} -ErrorAction SilentlyContinue
     if ($null -eq $cert) {
         Write-Host -ForegroundColor Yellow $Line.Certname"is not installed on this server"
-        clear $cert
         Write-Host "" # Separator
     } else {
         Write-Host -ForegroundColor Green $Line.Certname"is installed"
-        clear $cert
+        Clear-Variable $cert
         Write-Host "" # Separator
     }
 }
