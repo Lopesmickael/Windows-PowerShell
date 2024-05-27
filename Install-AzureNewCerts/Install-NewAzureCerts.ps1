@@ -44,7 +44,7 @@
 @{Certname = "Microsoft Azure TLS Issuing CA 05"; Link = "https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2005%20-%20xsign.crt"},
 @{Certname = "Microsoft Azure TLS Issuing CA 06"; Link = "https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2006%20-%20xsign.crt"}
 )
-
+[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor 3072;
 $CertTable = $Certificate_Table
     
     if ($Type -eq "Online") {
