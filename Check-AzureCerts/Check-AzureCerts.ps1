@@ -3,7 +3,11 @@
 
 $Certificate_Table = @(
 
+@{Certname = "Baltimore CyberTrust Root"; Certtb = "D4DE20D05E66FC53FE1A50882C78DB2852CAE474"},
+@{Certname = "DigiCert Global Root CA"; Certtb = "A8985D3A65E5E5C4B2D7D66D40C6DD2FB19C5436"},
 @{Certname = "DigiCert Global Root G2"; Certtb = "df3c24f9bfd666761b268073fe06d1cc8d4f82a4"},
+@{Certname = "DigiCert Global Root G3"; Certtb = "7E04DE896A3E666D00E687D33FFAD93BE83D349E"},
+@{Certname = "Entrust Root Certification Authority G2"; Certtb = "8cf427fd790c3ad166068de81e57efbb932272d4"},
 @{Certname = "Microsoft RSA Root Certificate Authority 2017"; Certtb = "73a5e64a3bff8316ff0edccc618a906e4eae4d74"},
 @{Certname = "Microsoft ECC Root Certificate Authority 2017"; Certtb = "999a64c37ff47d9fab95f14769891460eec4c3c5"},
 @{Certname = "Microsoft Azure TLS Issuing CA 01	"; Certtb = "2f2877c5d778c31e0f29c7e371df5471bd673173"},
