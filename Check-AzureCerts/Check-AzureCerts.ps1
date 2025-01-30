@@ -1,4 +1,26 @@
-######################################################################
+<#
+    .SYNOPSIS
+    This script demonstrates how to check certificates used by Azure in a Windows environment
+
+    .DESCRIPTION
+    The script will look for certificates installed on the computer using thumprint.
+    .NOTES
+    This script is provided for educational and example purposes only. It is not intended for use in production environments. Users must test and adapt the script to their specific needs and ensure compliance with their organization's security policies.
+    Version:        1.1
+    Author:         Mickaël Lopes
+    Company:        Microsoft
+    Creation Date:  Nov 24, 2023
+    Last Update:    Jan 30, 2025
+    Purpose/Change: 
+    11/24/2023 [M.L]: 1.0 - Initial script development
+    01/30/2025 [M.L]: 1.1 - Rewrite check and update certificate thumprint
+
+    .EXAMPLE
+    ./Check-AzureCerts.ps1 
+
+    .LINK
+    https://github.com/Lopesmickael/Windows-PowerShell/blob/master/Check-AzureCerts/Check-AzureCerts.ps1
+    #>
 # Certificate Table
 
 $Certificate_Table = @(
@@ -12,7 +34,6 @@ $Certificate_Table = @(
 @{Certname = "Microsoft ECC Root Certificate Authority 2017"; Certtb = "999a64c37ff47d9fab95f14769891460eec4c3c5"},
 @{Certname = "DigiCert Basic RSA CN CA G2"; Certtb = "4D1FA5D1FB1AC3917C08E43F65015E6AEA571179"},
 @{Certname = "DigiCert Cloud Services CA-1"; Certtb = "81B68D6CD2F221F8F534E677523BB236BBA1DC56"},
-@{Certname = "DigiCert Cloud Services CA-1"; Certtb = "b3f6b64a07bb9611f47174407841f564fb991f29"},
 @{Certname = "DigiCert SHA2 Secure Server CA"; Certtb = "626D44E704D1CEABE3BF0D53397464AC8080142C"},
 @{Certname = "DigiCert TLS Hybrid ECC SHA384 2020 CA1"; Certtb = "51E39A8BDB08878C52D6186588A0FA266A69CF28"},
 @{Certname = "DigiCert TLS RSA SHA256 2020 CA1"; Certtb = "1C58A3A8518E8759BF075B76B750D4F2DF264FCD"},
@@ -40,8 +61,6 @@ $Certificate_Table = @(
 @{Certname = "Microsoft ECC TLS Issuing AOC CA 02"; Certtb = "3709cd92105d074349d00ea8327f7d5303d729c8"},
 @{Certname = "Microsoft ECC TLS Issuing EOC CA 01"; Certtb = "5fa13b879b2ad1b12e69d476e6cad90d01013b46"},
 @{Certname = "Microsoft ECC TLS Issuing EOC CA 02"; Certtb = "58a1d8b1056571d32be6a7c77ed27f73081d6e7a"},
-@{Certname = "Microsoft RSA TLS CA 01"; Certtb = "703D7A8F0EBF55AAA59F98EAF4A206004EB2516A"},
-@{Certname = "Microsoft RSA TLS CA 02"; Certtb = "B0C2D2D13CDD56CDAA6AB6E2C04440BE4A429C75"},
 @{Certname = "Microsoft RSA TLS Issuing AOC CA 01"; Certtb = "4697fdbed95739b457b347056f8f16a975baf8ee"},
 @{Certname = "Microsoft RSA TLS Issuing AOC CA 02"; Certtb = "90ed2e9cb40d0cb49a20651033086b1ea2f76e0e"},
 @{Certname = "Microsoft RSA TLS Issuing EOC CA 01"; Certtb = "a04d3750debfccf1259d553dbec33162c6b42737"},
