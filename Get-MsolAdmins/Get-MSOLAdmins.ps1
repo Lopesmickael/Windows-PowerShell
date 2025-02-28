@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-	Script: Get-MSOLAdmins
+    Script: Get-MSOLAdmins
 .DESCRIPTION
     This script permit to get MSOLAdmins to audit quickly rights in Azure AD
 .EXAMPLE
@@ -8,18 +8,34 @@
 .NOTES
     Author: M LOPES
     Date:   2017-06-06
-	Version:0.1
+    Version:0.1
 #>
 #Loggin to AzureAD
 Write-Output "INFO : Connecting to AzureAD..."
-$AzureAD = Connect-MsolService
 
-$roles = Get-MsolRole 
-foreach ($role in $roles){
-    $users = Get-MsolRoleMember -RoleObjectId $role.ObjectId
-    Write-host "Role :"$role.Name "| Member count:" $users.count -backgroundcolor "red" -foregroundcolor "white"
-    if ($users -eq $null) {Write-host "No users in this group"}
-    else {
-        $users.DisplayName
+try {
+    $AzureAD = Connect-MsolService
+    Write-Output "INFO : Connected to AzureAD successfully."
+} catch {
+    Write-Error "ERROR : Failed to connect to AzureAD"
+    exit 1
+}
+
+try {
+    $roles = Get-MsolRole
+    foreach ($role in $roles) {
+        try {
+            $users = Get-MsolRoleMember -RoleObjectId $role.ObjectId
+            Write-Host "Role :" $role.Name "| Member count:" $users.count -BackgroundColor "red" -ForegroundColor "white"
+            if ($users -eq $null) {
+                Write-Host "No users in this group"
+            } else {
+                $users.DisplayName
+            }
+        } catch {
+            Write-Error "ERROR : Failed to get members for role $($role.Name). $_"
+        }
     }
+} catch {
+    Write-Error "ERROR : Failed to retrieve roles."
 }
