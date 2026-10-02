@@ -115,11 +115,11 @@ function Get-ArmReferences {
         }
 
         if ($Value -is [string]) {
-            $matches = [regex]::Matches(
+            $armIdMatches = [regex]::Matches(
                 $Value,
                 '(?i)/subscriptions/[0-9a-f-]+(?:/resourceGroups/[^/\s"''<>,;]+)?(?:/providers/[a-z0-9.\-]+(?:/[^/\s"''<>,;]+){2,})?'
             )
-            foreach ($match in $matches) {
+            foreach ($match in $armIdMatches) {
                 $references.Add([pscustomobject]@{
                     Id   = ConvertTo-NormalizedArmId -Id $match.Value
                     Path = $CurrentPath
